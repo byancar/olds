@@ -1,0 +1,54 @@
+{{extend 'layout.html'}}
+
+
+<h2 style="color: #696763;">Bem vindo(a), {{=var.first_name}}</h2>
+
+<h2 style="color: #B54926;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 auto 30px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;">Dados pessoais:</h2>
+<b>Nome:</b> {{=var.first_name}} <br>
+<b>Sobrenome:</b> {{=var.last_name}} <br>
+<b>Email:</b> {{=var.email}} <br>
+<b>Data de nascimento:</b> {{=var.birth_date.strftime('%d/%m/%Y')}} <br>
+
+<h2 style="color: #B54926;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 auto 30px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;">Endereço(s):</h2>
+
+    
+    
+
+    {{for a in addresses:}}
+		<div class="col-sm-4">
+			<b>Endereço:</b> {{=a.address}},{{=a.adr_number}}<br>
+			<b>Cidade:</b> {{=a.city}}<br>
+			<b>Estado:</b> {{=a.adr_state}}<br>
+			<b>CEP:</b> {{=a.zip_code}}<br>
+			<b>Complemento:</b> {{=a.complement}}<br>
+		</div>
+    {{pass}}
+    <div style="clear:both">
+
+    <a href="{{=URL('customer', 'create_address')}}"><button class="btn btn-primary">{{=T('Adicionar endereço')}}</button></a>
+    </div>
+    <h2 style="color: #B54926;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 auto 30px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;">Pedidos:</h2>
+
+
+

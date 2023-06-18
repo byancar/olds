@@ -1,0 +1,17 @@
+{{extend 'layout.html'}}
+<div class=""">
+	<div class="product-image-wrapper">
+	  <div class="single-products">
+		  <h1>{{=product.name}}</h1>
+		  <div class="productinfo text-center">
+			<img src="{{=URL("download",args=product.featured_image)}}" alt="" />
+			<h2>R$ {{=product.price}}</h2>
+			<p>{{=product.name}}</p>
+			<p>{{=product.description}}</p>
+			<a href="{{=URL(c='product', f='buy')}}/{{=product.id}}" class="btn btn-default add-to-cart">
+			  <i class="fa fa-shopping-cart"></i>{{=T("Add to cart")}}
+			</a>                       
+		  </div>
+	  </div>
+	</div>
+</div>

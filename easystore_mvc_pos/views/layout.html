@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]><html class="ie ie6 ie-lte9 ie-lte8 ie-lte7 no-js" lang="{{=T.accepted_language or 'en'}}"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7 ie-lte9 ie-lte8 ie-lte7 no-js" lang="{{=T.accepted_language or 'en'}}"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8 ie-lte9 ie-lte8 no-js" lang="{{=T.accepted_language or 'en'}}"> <![endif]-->
+<!--[if IE 9]><html class="ie9 ie-lte9 no-js" lang="{{=T.accepted_language or 'en'}}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{=T.accepted_language or 'en'}}"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{=response.title or request.application}}</title>
+    <!--[if !HTML5]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge{{=not request.is_local and ',chrome=1' or ''}}">
+    <![endif]-->
+    <!-- www.phpied.com/conditional-comments-block-downloads/ -->
+    <!-- Always force latest IE rendering engine
+         (even in intranet) & Chrome Frame
+         Remove this if you use the .htaccess -->
+       
+    <meta charset="utf-8" />
+
+    <!-- http://dev.w3.org/html5/markup/meta.name.html -->
+    <meta name="application-name" content="{{=request.application}}" />
+
+    <!-- Speaking of Google, don't forget to set your site up:
+         http://google.com/webmasters -->
+    <meta name="google-site-verification" content="" />
+
+    <!--  Mobile Viewport Fix
+          j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag
+          device-width: Occupy full width of the screen in its current orientation
+          initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
+          user-scalable = yes allows the user to zoom in -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
+
+    <!-- All JavaScript at the bottom, except for Modernizr which enables
+         HTML5 elements & feature detects -->
+    <script src="{{=URL('static','js/modernizr.custom.js')}}"></script>
+
+    <link href="{{=URL('static', 'css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{=URL('static', 'css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{=URL('static', 'css/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{=URL('static', 'css/price-range.css')}}" rel="stylesheet">
+    <link href="{{=URL('static', 'css/animate.css')}}" rel="stylesheet">
+    <link href="{{=URL('static', 'css/main.css')}}" rel="stylesheet">
+    <link href="{{=URL('static', 'css/responsive.css')}}" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="{{=URL('static', 'js/html5shiv.js')}}"></script>
+    <![endif]-->
+
+    {{include 'web2py_ajax.html'}}
+
+    <noscript>
+      <link href="{{=URL('static', 'css/web2py_bootstrap_nojs.css')}}" rel="stylesheet" type="text/css" />
+    </noscript>
+
+</head><!--/head-->
+
+<body>
+  <header id="header"><!--header-->
+    <div class="header_top"><!--header_top-->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="contactinfo">
+              <ul class="nav nav-pills">
+                <li><a href="#"><i class="fa fa-phone"></i> +55 (11) 1234-5678</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> contact@mvcstore.com</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="social-icons pull-right">
+              <ul class="nav navbar-nav">
+                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/header_top-->
+	
+
+    <div class="header-middle"><!--header-middle-->
+		
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="logo pull-left">
+              <a href="{{=URL(c='default', f='index')}}"><img src="{{=URL('static', 'images/store_logo.png')}}" alt="" /></a>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="shop-menu pull-right">
+              <ul class="nav navbar-nav">
+			  
+                <li><a href="{{=URL(c='default', f='cart')}}""><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
+
+                {{if not auth.is_logged_in():}}
+                  <li><a href="{{=URL(c='default', f='user')}}"><i class="fa fa-lock"></i> Login</a></li>
+                  <li><a href="{{=URL(c='default', f='register')}}"><i class="fa fa-lock"></i> Registrar</a></li>
+                {{else:}}
+                  <li><a href="{{=URL(c='customer', f='index')}}"><i class="fa fa-lock"></i> Perfil</a></li>
+                {{pass}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/header-middle-->
+  
+    <div class="header-bottom"><!--header-bottom-->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div class="mainmenu pull-left">
+              <ul class="nav navbar-nav collapse navbar-collapse">
+                <li><a href="{{=URL(c='default', f='index')}}" class="active">Home</a></li>
+                <li class="dropdown"><a href="#">Produtos<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a  href="{{=URL(c='product', f='show_products')}}">Listagem</a></li>
+                    <li><a href="{{=URL(c='default', f='cart')}}">Carrinho</a></li> 
+                    <li><a href="{{=URL(c='default', f='user')}}">Tela de Login</a></li> 
+                                    </ul>
+                                </li> 
+                <li><a href="{{=URL(c='default', f='contact')}}">Fale Conosco</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="search_box pull-right">
+              <form action="{{=URL(c='default', f='search')}}" method="get" >
+              <input name="word" id="busca" type="text" placeholder="Busca"/>
+              <button type="submit" class="btn btn-secondary" >Buscar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/header-bottom-->
+  </header><!--/header-->
+    
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="left-sidebar">
+            <h2>{{=T("Categories")}}</h2>
+            <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+            {{for category in response.category_menu:}}
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a href="{{=URL('product', 'show_products', vars={'category':category.id, 'category_name':category.name})}}">
+                      {{=category.name}}
+                    </a>
+                  </h4>
+                </div>
+              </div>
+            {{pass}}
+            </div><!--/category-products-->         
+          </div>
+        </div>        
+        <div class="col-sm-9 padding-right">
+            {{include}}          
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer id="footer"><!--Footer-->
+  
+    <div class="footer-widget">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>Informações</h2>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="{{=URL('default', 'pages', vars={'name':'quem_somos'})}}">Quem somos</a></li>
+                <li><a href="{{=URL('default', 'pages', vars={'name':'entrega'})}}">Entrega</a></li>
+                <li><a href="{{=URL('default', 'pages', vars={'name':'politica'})}}">Política de Privacidade</a></li>
+                <li><a href="{{=URL('default', 'pages', vars={'name':'termos'})}}">Termos e condições</a></li>
+
+              </ul>
+            </div>
+          </div>
+		 
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>Extras</h2>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="{{=URL(c='default', f='contact')}}">Contate-nos</a></li>
+                <li><a href="{{=URL('default', 'pages', vars={'name':'devolucoes'})}}">Devoluções</a></li>
+                <li><a href="#">Mapa da Loja</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>Suporte por email</h2>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">Entre em contato para informações, sugestões ou críticas.</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-3 col-sm-offset-1">
+            <div class="single-widget">
+              <h2>Assine nossa newsletter</h2>
+              <div class="searchform">
+                <input type="text" placeholder="Email" />
+                <button type="submit" class="btn btn-default" onclick="$('#newsletter').slideToggle()"><i class="fa fa-arrow-circle-o-right"></i></button>
+              </div>
+            </div>
+            <br>
+            <div class="panel panel-warning" id='newsletter'>
+              <div class="panel-heading">
+                <h3 class="panel-title">Newsletter</h3>
+              </div>
+              <div class="panel-body">
+                Parabéns! Você foi inscrito com sucesso.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <p class="pull-left">Copyright &copy; {{=request.now.year}} {{=response.title}}.</p>
+        </div>
+      </div>
+    </div>
+    
+  </footer><!--/Footer-->
+  <script src="{{=URL('static','js/jquery.js')}}"></script>
+  <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
+  <script src="{{=URL('static','js/jquery.scrollUp.min.js')}}"></script>
+  <script src="{{=URL('static','js/price-range.js')}}"></script>
+  <script src="{{=URL('static','js/jquery.prettyPhoto.js')}}"></script>
+  <script src="{{=URL('static','js/main.js')}}"></script>
+  
+</body>
+</html>
